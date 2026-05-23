@@ -15,7 +15,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .strike-through-td {
     text-decoration: line-through;
-}
+} 
+
+/* .nav-bar-toggler-icon{
+  padding: 1cm;
+} */
 
 /* h1 {
   color: red;

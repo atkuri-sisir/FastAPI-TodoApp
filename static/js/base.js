@@ -27,6 +27,7 @@
 
                 if (response.ok) {
                     form.reset(); // Clear the form
+                    window.location.href = '/todos/todo-page';
                 } else {
                     // Handle error
                     const errorData = await response.json();
@@ -66,7 +67,7 @@
 
             console.log(`${todoId}`)
 
-            const response = await fetch(`/todos/todo/${todoId}`, {
+            const response = await fetch(`/todos/${todoId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -98,7 +99,7 @@
                     throw new Error('Authentication token not found');
                 }
 
-                const response = await fetch(`/todos/todo/${todoId}`, {
+                const response = await fetch(`/todos/${todoId}`, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': `Bearer ${token}`

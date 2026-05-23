@@ -117,6 +117,9 @@ async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm,
                                  db: db_dependency):
     user = authenticate_user(form_data.username, form_data.password, db)
 
+    if not user:
+        raise HTTPException(detail="Could not validate user.", status_code=status.HTTP_401_UNAUTHORIZED)
+
     token = create_access_token(user.username, user.id, user.role, timedelta(minutes=30))
 
     return {'access_token': token, 'token_type': 'bearer'}
